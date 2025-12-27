@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gustavo Juantorena | Neuroscience, Data Science & AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal site of Gustavo Juantorena, neuroscientist and computer science PhD student working on computational psychiatry, digital neuropsychology and data science.">
+  
+  <meta name="theme-color" content="black"> <!-- color de los bordes en móvil -->
+
+
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-alt: #151b2f;
+      --accent: #4f9cff;
+      --accent-soft: rgba(79, 156, 255, 0.15);
+      --text: #f5f5f5;
+      --muted: #a3abc2;
+      --border: #293252;
+      --card-radius: 16px;
+      --max-width: 1000px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #151b2f 0, #050814 55%, #02030a 100%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 1.5rem;
+      
+      display: flex;
+      justify-content: center;
+    }
+
+   body.light-mode .page{
+        
+        background-color: white;
+    }
+
+    body.light-mode {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #151b2f 0, #050814 55%, #02030a 100%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+
+/*-------------   MODO OSCURO / CLARO ..........................*/
+     
+
+/* Contenedor del botón */
+.light-mode-toggle.modern { /*  Modo claro   */
+    position: fixed;
+    top: 5%;
+    
+    margin-left: 20px;
+   
+    width: 30px;
+    height: 30px;
+    /* margin: 25px 0 10px 0; */
+    background-color: transparent;
+    border: 1px solid gray;
+    border-radius: 10%;
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 80;
+    transition: 0.3s linear;
+  }
+  
+  body.light-mode .light-mode-toggle.modern {
+    background-color: transparent; /* Modo oscuro*/
+   
+    transition: 0.3s linear;
+  }
+
+
+  .light-mode-toggle.modern:hover { /*  Modo claro   */
+    transform: scale(.95);
+    box-shadow:  0 0px .2rem .1rem var(--accent);
+    transition: 0.3s linear;
+  }
+
+
+  body.light-mode .light-mode-toggle.modern:hover {
+    transform: scale(.95);
+    box-shadow:  0 0px .2rem .1rem var(--accent);
+    transition: 0.3s linear;
+  }
+  
+  
+  /* Ícono dentro del botón */
+  .icon {
+    width: 15px;
+    height: 15px;
+    
+   /*  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="%23FFD700"/></svg>') no-repeat center / contain; */
+  
+    background-color: white;
+    border-radius: 50%;
+   
+    transition: 0.3s linear;
+  }
+
+
+  
+  
+  body.light-mode .modern .icon {
+    filter: invert(1);  
+    transition: 0.3s linear;
+  }
+
+ 
+/*-------------------------------------------------------..........................*/
+     
+
+
+
+
+    .page,  body.light-mode .page {
+      width: 100%;
+      max-width: var(--max-width);
+      padding: 50px 10px 20px 10px;
+    }
+
+
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+
+
+        /* ---- Added style for profile image ---- */
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center -5px; /* 👉 mueve el recorte hacia arriba */
+  border: 2px solid var(--accent);
+  
+  margin: 0 auto 1.9rem;
+  display: block;
+  transform: scale(1.4);       /* zoom suave */
+
+}
+
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(11,16,32,0.85);
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+
+    body.light-mode .badge{
+        color: white;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(79,156,255,0.8);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      margin: 1rem 0 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 640px;
+      margin: 0.5rem auto 1rem;
+    }
+
+    .subtitle a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .subtitle a:hover {
+      text-decoration: underline;
+    }
+
+    body.light-mode .subtitle{
+        color: rgb(66, 66, 66);
+    }
+
+ 
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 0.75rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: rgba(9,14,30,0.8);
+    }
+
+    body.light-mode .tag{
+        color: white;
+    }
+
+    .lang-switch {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .lang-btn {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.9rem;
+      font-size: 0.8rem;
+      background: rgba(10,15,32,0.8);
+      color: var(--muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+
+    body.light-mode .lang-btn{
+        background-color: transparent;
+        color: rgb(94, 93, 93);
+    }
+
+    .lang-btn.active {
+      background: var(--accent-soft);
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    body.light-mode .lang-btn.active{
+        transition: .2s linear;
+        color: black;
+        box-shadow: inset 0 0 .5rem var(--accent);
+    }
+    main {
+      margin-top: 1.5rem;
+    }
+
+    .lang-section {
+      display: none;
+      animation: fadeIn 0.3s ease-out;
+
+    }
+
+ 
+    .lang-section.active {
+      display: block;
+    }
+
+
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    section {
+      background-color: rgba(11,16,32,0.9);
+      border-radius: var(--card-radius);
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.4);
+    }
+
+
+    section:hover{
+        box-shadow: 0 0 1rem .3rem var(--accent);
+        transition: .2s linear;
+    }
+
+      body.light-mode section:hover{
+        box-shadow: 0 0 1rem .3rem rgb(101, 101, 101);
+        transition: .2s linear;
+    }
+
+    section h2 {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    body.light-mode section h2{
+        color: black;
+    }
+
+    section h2 span.icon {
+      font-size: 1.2rem;
+      background-color: var(--accent);
+    }
+
+    body.light-mode section p{
+        color: rgb(74, 74, 74);
+    }
+    .about-text p + p {
+      margin-top: 0.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+
+    body.light-mode .social-links{
+        background-color: transparent;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(8,12,26,0.9);
+      font-size: 0.85rem;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    
+    .social-link img {
+      width: 18px;
+      height: 18px;
+      filter: invert(1) grayscale(1);
+      
+    }
+
+    .social-link span.label {
+      opacity: 0.8;
+    }
+
+    .email {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    body.light-mode .email code{
+        color: white;
+    }
+
+    .email code {
+      background: rgba(7,11,24,0.9);
+      border-radius: 6px;
+      padding: 0.15rem 0.4rem;
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.2fr 1.1fr;
+      gap: 1.25rem;
+    }
+
+    .stats-card {
+      text-align: center;
+      padding: 0.75rem;
+      border-radius: var(--card-radius);
+      border: 1px dashed var(--border);
+      background: radial-gradient(circle at top, rgba(79,156,255,0.15), rgba(5,8,20,0.95));
+    }
+
+    .stats-card img {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .stats-card small {
+      display: block;
+      margin-top: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.45rem 0.5rem;
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(13,18,34,0.9);
+      text-align: left;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    tbody tr:nth-child(even) {
+      background: rgba(9,14,30,0.9);
+    }
+
+      body.light-mode  tbody tr {
+      background-color: white;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .list {
+      list-style: none;
+      margin-top: 0.35rem;
+    }
+
+    .list li {
+      margin-bottom: 0.3rem;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .media-item {
+      text-align: center;
+     border: solid rgb(255, 255, 255) 3px;
+     box-shadow: 0 3px 1rem .2rem gray;
+     border-radius: 5px;
+    }
+
+    .media-item img {
+      width: 100%;
+      
+     
+      border: 1px solid rgba(255,255,255,0.08);
+      display: block;
+      margin: 0 auto;
+      object-fit: cover;
+      
+    }
+
+    .media-item p {
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+    }
+
+    body.light-mode .grid-2 div p{
+        color: rgb(60, 60, 60);
+    }
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 1rem;
+      padding: 20px 0;
+      background-color: var(--bg);
+    }
+
+    body.light-mode footer p{
+        color: rgb(173, 173, 173);
+    }
+
+
+
+
+
+
+
+
+
+body.light-mode {
+    background-color: white;
+}
+
+body.light-mode header{
+    background-color: white;
+}
+
+  body.light-mode main {
+    background-color: white;
+   }
+
+   body.light-mode h1{
+    color: black;
+   }
+ 
+
+     body.light-mode section{
+        background-color: rgb(217, 216, 216);
+     }
+    section h2 {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+
+  
+
+  body.light-mode .medios{
+    background-color: white;
+    box-shadow: none;
+  }
+ 
+
+
+
+    @media (max-width: 720px) {
+      body {
+        padding: 1rem;
+      }
+
+      section {
+        padding: 1rem 1rem;
+      }
+    
+      body.light-mode {
+        padding: 1rem;
+      }
+
+        body.light-mode  section {
+            padding: 1rem 1rem;
+        }
+        
+        .grid-2 {
+            grid-template-columns: 1fr;
+        }
+    }
+
+
+
+
+
+  </style>
+ 
+</head>
+
+<body>
+  <div class="page">
+    <div class="light-mode-toggle modern" id="light-mode-toggle">
+         <span class="icon"></span>
+    </div>
+    <header>
+      <img src="gus.jpg" alt="Photo of Gustavo Juantorena" class="profile-photo">
+    
+      <div class="badge">
+        <span class="badge-dot"></span>
+        <span>Neuroscience · Data Science · AI</span>
+      </div>
+    
+      <h1>Gustavo Juantorena</h1>
+      <p class="subtitle">
+        Neuroscientist now pursuing a Computer Science PhD at the
+        <a href="http://liaa.dc.uba.ar/" target="_blank" rel="noopener noreferrer">Laboratory of Applied Artificial Intelligence</a>,
+        working on computational psychiatry through high precision hand and eye movement characterization during neuropsychological tests.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Digital neuropsychology</span>
+        <span class="tag">Computational psychiatry</span>
+        <span class="tag">Eye tracking</span>
+        <span class="tag">Data science</span>
+        <span class="tag">Machine learning</span>
+      </div>
+
+      <div class="lang-switch" aria-label="Language selector">
+        <button class="lang-btn active" data-lang="en">
+          <span>🇬🇧</span>
+          <span>English</span>
+        </button>
+        <button class="lang-btn" data-lang="es">
+          <span>🇪🇸</span>
+          <span>Español</span>
+        </button>
+      </div>
+     
+    </header>
+
+    <main>
+
+
+      <!-- English section -->
+      <div id="lang-en" class="lang-section active" lang="en">
+        <section>
+          <h2><span class="icon">✨</span>About</h2>
+          <div class="about-text">
+            <p>
+              I am a neuroscientist currently doing a Computer Science PhD at the Laboratory of Applied Artificial Intelligence (LIAA, Universidad de Buenos Aires).
+              My work focuses on computational psychiatry and digital neuropsychology, using high precision hand and eye movement data during neuropsychological test performance.
+            </p>
+            <p>
+              I am particularly interested in data science, machine learning, eye tracking and online neuro and psychology experiments.
+            </p>
+            <p>
+              I am also the co creator and lead maintainer of
+              <a href="https://github.com/NeuroLIAA/pyxations" target="_blank" rel="noopener noreferrer"><strong>pyxations</strong></a>,
+              a Python library for working with eye tracking data and events.
+            </p>
+          </div>
+        </section>
+
+        <section class="medios">
+          <h2><span class="icon">🤝</span>Connect</h2>
+          <p class="email">
+            Email: <code>gjuantorena at gmail dot com</code>
+          </p>
+          <div class="social-links medios">
+            <a class="social-link" href="https://www.linkedin.com/in/gustavo-juantorena-1674b2a4/" target="_blank" rel="noopener noreferrer">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" alt="LinkedIn">
+              <span class="label">LinkedIn</span>
+            </a>
+            <a class="social-link" href="https://twitter.com/GJuantorena" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.icons8.com/carbon-copy/200/000000/twitter--v2.png" alt="Twitter">
+              <span class="label">Twitter</span>
+            </a>
+            <a class="social-link" href="https://medium.com/@gjuantorena" target="_blank" rel="noopener noreferrer">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.12.1/icons/medium.svg" alt="Medium">
+              <span class="label">Medium</span>
+            </a>
+          </div>
+        </section>
+
+        <section>
+          <div class="grid-2">
+            <div>
+              <h2><span class="icon">📊</span>GitHub activity</h2>
+              <p style="font-size:0.85rem;margin-bottom:0.4rem;">
+                A snapshot of my recent work in open source and research code.
+              </p>
+            </div>
+            <div class="stats-card">
+              <img src="https://github-readme-stats-vercel-ochre.vercel.app/api?username=GEJ1&theme=dark&show_icons=true" alt="Gustavo Juantorena Github s"></img>
+              <small>Generated with <a href="https://github.com/anuraghazra/github-readme-stats" target="_blank" rel="noopener noreferrer">github-readme-stats</a>.</small>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2><span class="icon">✍️</span>Blog posts & notebooks</h2>
+          <table>
+            <thead>
+            <tr>
+              <th>Article</th>
+              <th>Code / notebook</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>
+                <a href="https://gustavojuantorena.substack.com/p/construyendo-un-buscador-semantico" target="_blank" rel="noopener noreferrer">
+                  Building a semantic search engine for LinkedIn with Streamlit and Sentence Transformers
+                  (in Spanish)
+                </a>
+              </td>
+              <td>
+                <a href="https://github.com/GEJ1/buscador-linkedin/" target="_blank" rel="noopener noreferrer">
+                  <img src="https://colab.research.google.com/img/colab_favicon_256px.png" alt="Google Colab notebook" width="32">
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                🗜️
+                <a href="https://gustavojuantorena.substack.com/p/listas-y-otros-tipos-por-comprension" target="_blank" rel="noopener noreferrer">
+                  List comprehensions (and more) in Python
+                  (in Spanish)
+                </a>
+              </td>
+              <td>
+                <a href="https://github.com/GEJ1/substack/blob/main/comprension.ipynb" target="_blank" rel="noopener noreferrer">
+                  <img src="https://colab.research.google.com/img/colab_favicon_256px.png" alt="Google Colab notebook" width="32">
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://gustavojuantorena.substack.com/p/los-metodos-magicos-de-python-que" target="_blank" rel="noopener noreferrer">
+                  The "magic" methods of Python
+                  (in Spanish)
+                </a>
+              </td>
+              <td>
+                <a href="https://github.com/GEJ1/substack/blob/main/Metodos_Magicos_Python.ipynb" target="_blank" rel="noopener noreferrer">
+                  <img src="https://colab.research.google.com/img/colab_favicon_256px.png" alt="Google Colab notebook" width="32">
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://gustavojuantorena.substack.com/p/args-y-kwargs-en-python" target="_blank" rel="noopener noreferrer">
+                  *args and **kwargs in Python
+                  (in Spanish)
+                </a>
+              </td>
+              <td>
+                <a href="https://github.com/GEJ1/substack/blob/main/args_kwargs.ipynb" target="_blank" rel="noopener noreferrer">
+                  <img src="https://colab.research.google.com/img/colab_favicon_256px.png" alt="Google Colab notebook" width="32">
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://gjuantorena.medium.com/the-not-so-short-tutorial-for-study-erps-using-eeglab-custom-scripting-in-matlab-7d6800ec62ef" target="_blank" rel="noopener noreferrer">
+                  The not so short tutorial for studying ERPs using EEGLAB and custom MATLAB scripting
+                </a>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://gjuantorena.medium.com/como-programar-f%C3%A1cilmente-experimentos-comportamentales-online-utilizando-jspysch-2a9d5c8c3b5" target="_blank" rel="noopener noreferrer">
+                  How to easily program online behavioral experiments using jsPsych
+                  (in Spanish)
+                </a>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://gjuantorena.medium.com/como-subir-experimentos-comportamentales-a-la-web-f%C3%A1cil-y-gratis-con-jspsych-y-cognition-run-c8631a3fccb7" target="_blank" rel="noopener noreferrer">
+                  How to deploy behavioral experiments to the web for free with jsPsych and Cognition.run
+                  (in Spanish)
+                </a>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://gjuantorena.medium.com/como-empezar-a-analizar-datos-con-python-usando-google-colab-1e3cf68cba" target="_blank" rel="noopener noreferrer">
+                  Getting started with data analysis in Python using Google Colab
+                  (in Spanish)
+                </a>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://gjuantorena.medium.com/por-qu%C3%A9-se-ven-as%C3%AD-los-dataframes-de-pandas-en-un-jupyter-notebook-e411878a82f5" target="_blank" rel="noopener noreferrer">
+                  Why do pandas DataFrames look like that in a Jupyter Notebook
+                  (in Spanish)
+                </a>
+              </td>
+              <td></td>
+            </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2><span class="icon">🎓</span>Teaching</h2>
+          <ul class="list">
+            <li>
+              <strong><a href="https://youtu.be/IRGrqXHDMxM" target="_blank" rel="noopener noreferrer">Python automation</a></strong>
+            </li>
+            <li>
+              <strong><a href="https://github.com/gastonbujia/curso-visualizacion-datos-SAN-2022" target="_blank" rel="noopener noreferrer">
+                Analysis and visualizations with Python for Neuroscience course
+              </a></strong>
+            </li>
+            <li>
+              <strong><a href="https://github.com/GEJ1/web_scraping_freecodecamp" target="_blank" rel="noopener noreferrer">
+                Web scraping with Python for freeCodeCamp
+              </a></strong>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><span class="icon">🎥</span>Media</h2>
+          <div class="media-grid">
+            <div class="media-item">
+              <a href="https://youtu.be/EIJ-9gLuiX8?si=IxaqqwFMCpERJySA" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.youtube.com/vi/EIJ-9gLuiX8/0.jpg" alt="¿Cómo Aprender Data Science? Entrevista a Gustavo Juantorena">
+              </a>
+              <p><strong>How to learn Data Science</strong></p>
+              <p>Interview with Gustavo Juantorena</p>
+            </div>
+            <div class="media-item">
+              <a href="https://youtu.be/YEBiJxqIjdY?si=RRVyFhyhfMDI0b29" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.youtube.com/vi/YEBiJxqIjdY/0.jpg" alt="Monitoreo de Alzheimer con Inteligencia Artificial">
+              </a>
+              <p><strong>Monitoring Alzheimer with Artificial Intelligence</strong></p>
+              <p>Talk by Gustavo Juantorena</p>
+            </div>
+            <div class="media-item">
+              <a href="https://www.youtube.com/watch?v=0LT4kr-GPBA&t=224s&ab_channel=freeCodeCampEspa%C3%B1ol" target="_blank" rel="noopener noreferrer">
+                <img src="https://i.ytimg.com/vi/0LT4kr-GPBA/hqdefault.jpg" alt="freeCodeCamp Podcast en Español Episodio 22">
+              </a>
+              <p><strong>freeCodeCamp Podcast in Spanish, episode 22</strong></p>
+              <p>Exploring data science and neuroscience</p>
+            </div>
+            <div class="media-item">
+              <a href="https://youtu.be/KP-okY7gt5c?si=cJidBelavtukwDCE" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.youtube.com/vi/KP-okY7gt5c/0.jpg" alt="De Neurociencia a Ciencia de Datos">
+              </a>
+              <p><strong>From Neuroscience to Data Science</strong></p>
+              <p>Gustavo Juantorena</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2><span class="icon">📚</span>Scientific contributions</h2>
+          <ul class="list">
+            <li>
+              <strong>
+                <a href="https://www.nature.com/articles/s41598-022-16431-9" target="_blank" rel="noopener noreferrer">
+                  Unveiling Trail Making Test: visual and manual trajectories indexing multiple executive processes
+                  (Nature Scientific Reports)
+                </a>
+              </strong>
+            </li>
+            <li>
+              <strong>
+                <a href="https://www.biorxiv.org/content/10.1101/2023.07.11.548447v1.abstract" target="_blank" rel="noopener noreferrer">
+                  Web based eye tracking for remote cognitive assessments: The anti saccade task as a case study
+                  (bioRxiv)
+                </a>
+              </strong>
+            </li>
+            <li>
+              <strong>
+                <a href="https://dl.acm.org/doi/10.1145/3649902.3655648" target="_blank" rel="noopener noreferrer">
+                  Enhancing Cognitive Assessment: Integrating Hand and Eye Tracking in the Digital Trail Making Test for Mild Cognitive Impairment
+                  (ETRA 2024)
+                </a>
+              </strong>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+
+
+
+
+
+
+
+      <!-- Spanish section -->
+      <div id="lang-es" class="lang-section" lang="es">
+        <section>
+          <h2><span class="icon">✨</span>Sobre mí</h2>
+          <div class="about-text">
+            <p>
+              Soy neurocientífico y actualmente curso un doctorado en Ciencias de la Computación en el Laboratorio de Inteligencia Artificial Aplicada (LIAA, Universidad de Buenos Aires).
+              Mi trabajo se centra en psiquiatría computacional y neuropsicología digital, utilizando movimientos de mano y de ojos de alta precisión durante la resolución de pruebas neuropsicológicas.
+            </p>
+            <p>
+              Me interesan especialmente la ciencia de datos, el aprendizaje automático, el eye tracking y los experimentos online en neurociencia y psicología.
+            </p>
+            <p>
+              Además, soy co creador y mantenedor principal de
+              <a href="https://github.com/NeuroLIAA/pyxations" target="_blank" rel="noopener noreferrer"><strong>pyxations</strong></a>,
+              una librería de Python para trabajar con datos y eventos de eye tracking.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2><span class="icon">🤝</span>Conectemos</h2>
+          <p class="email">
+            Email: <code>gjuantorena at gmail dot com</code>
+          </p>
+          <div class="social-links">
+            <a class="social-link" href="https://www.linkedin.com/in/gustavo-juantorena-1674b2a4/" target="_blank" rel="noopener noreferrer">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" alt="LinkedIn">
+              <span class="label">LinkedIn</span>
+            </a>
+            <a class="social-link" href="https://twitter.com/GJuantorena" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.icons8.com/carbon-copy/200/000000/twitter--v2.png" alt="Twitter">
+              <span class="label">Twitter</span>
+            </a>
+            <a class="social-link" href="https://medium.com/@gjuantorena" target="_blank" rel="noopener noreferrer">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.12.1/icons/medium.svg" alt="Medium">
+              <span class="label">Medium</span>
+            </a>
+          </div>
+          <p class="email" style="margin-top:0.7rem;">
+            Soy muy activo compartiendo contenido sobre <strong>ciencia de datos</strong> y <strong>machine learning</strong> en LinkedIn.
+          </p>
+        </section>
+
+        <section>
+          <div class="grid-2">
+            <div>
+              <h2><span class="icon">📊</span>Actividad en GitHub</h2>
+              <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.4rem;">
+                Una vista rápida de mi trabajo reciente en código abierto y proyectos de investigación.
+              </p>
+            </div>
+            <div class="stats-card">
+               <img src="https://github-readme-stats-vercel-ochre.vercel.app/api?username=GEJ1&theme=dark&show_icons=true" alt="Gustavo Juantorena Github s"></img>
+              <small>Generado con <a href="https://github.com/anuraghazra/github-readme-stats" target="_blank" rel="noopener noreferrer">github-readme-stats</a>.</small>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2><span class="icon">✍️</span>Artículos y notebooks</h2>
+          <table>
+            <thead>
+            <tr>
+              <th>Artículo</th>
+              <th>Código / notebook</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>
+                <a href="https://gustavojuantorena.substack.com/p/construyendo-un-buscador-semantico" target="_blank" rel="noopener noreferrer">
+                  Construyendo un buscador semántico para LinkedIn con Streamlit y Sentence Transformers
+                </a>
+              </td>
+              <td>
+                <a href="https://github.com/GEJ1/buscador-linkedin/" target="_blank" rel="noopener noreferrer">
+                  <img src="https://colab.research.google.com/img/colab_favicon_256px.png" alt="Notebook en Google Colab" width="32">
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                🗜️
+                <a href="https://gustavojuantorena.substack.com/p/listas-y-otros-tipos-por-comprension" target="_blank" rel="noopener noreferrer">
+                  Listas (y otros tipos) por comprensión en Python
+                </a>
+              </td>
+              <td>
+                <a href="https://github.com/GEJ1/substack/blob/main/comprension.ipynb" target="_blank" rel="noopener noreferrer">
+                  <img src="https://colab.research.google.com/img/colab_favicon_256px.png" alt="Notebook en Google Colab" width="32">
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://gustavojuantorena.substack.com/p/los-metodos-magicos-de-python-que" target="_blank" rel="noopener noreferrer">
+                  Los métodos mágicos de Python (que de mágicos no tienen nada)
+                </a>
+              </td>
+              <td>
+                <a href="https://github.com/GEJ1/substack/blob/main/Metodos_Magicos_Python.ipynb" target="_blank" rel="noopener noreferrer">
+                  <img src="https://colab.research.google.com/img/colab_favicon_256px.png" alt="Notebook en Google Colab" width="32">
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://gustavojuantorena.substack.com/p/args-y-kwargs-en-python" target="_blank" rel="noopener noreferrer">
+                  *args y **kwargs en Python
+                </a>
+              </td>
+              <td>
+                <a href="https://github.com/GEJ1/substack/blob/main/args_kwargs.ipynb" target="_blank" rel="noopener noreferrer">
+                  <img src="https://colab.research.google.com/img/colab_favicon_256px.png" alt="Notebook en Google Colab" width="32">
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://gjuantorena.medium.com/the-not-so-short-tutorial-for-study-erps-using-eeglab-custom-scripting-in-matlab-7d6800ec62ef" target="_blank" rel="noopener noreferrer">
+                  The not so short tutorial for study ERPs (using EEGLAB custom scripting in MATLAB)
+                </a>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://gjuantorena.medium.com/como-programar-f%C3%A1cilmente-experimentos-comportamentales-online-utilizando-jspysch-2a9d5c8c3b5" target="_blank" rel="noopener noreferrer">
+                  Cómo programar fácilmente experimentos comportamentales online utilizando jsPsych
+                </a>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://gjuantorena.medium.com/como-subir-experimentos-comportamentales-a-la-web-f%C3%A1cil-y-gratis-con-jspsych-y-cognition-run-c8631a3fccb7" target="_blank" rel="noopener noreferrer">
+                  Cómo subir experimentos comportamentales a la web fácil y gratis con jsPsych y Cognition.run
+                </a>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://gjuantorena.medium.com/como-empezar-a-analizar-datos-con-python-usando-google-colab-1e3cf68cba" target="_blank" rel="noopener noreferrer">
+                  Cómo empezar a analizar datos con Python usando Google Colab
+                </a>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://gjuantorena.medium.com/por-qu%C3%A9-se-ven-as%C3%AD-los-dataframes-de-pandas-en-un-jupyter-notebook-e411878a82f5" target="_blank" rel="noopener noreferrer">
+                  Por qué se ven así los DataFrames de pandas en un Jupyter Notebook
+                </a>
+              </td>
+              <td></td>
+            </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2><span class="icon">🎓</span>Docencia</h2>
+          <ul class="list">
+            <li>
+              <strong><a href="https://youtu.be/IRGrqXHDMxM" target="_blank" rel="noopener noreferrer">Automatización con Python</a></strong>
+            </li>
+            <li>
+              <strong><a href="https://github.com/gastonbujia/curso-visualizacion-datos-SAN-2022" target="_blank" rel="noopener noreferrer">
+                Curso de análisis y visualización de datos con Python para Neurociencia
+              </a></strong>
+            </li>
+            <li>
+              <strong><a href="https://github.com/GEJ1/web_scraping_freecodecamp" target="_blank" rel="noopener noreferrer">
+                Web scraping con Python para freeCodeCamp
+              </a></strong>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><span class="icon">🎥</span>Charlas y entrevistas</h2>
+          <div class="media-grid">
+            <div class="media-item">
+              <a href="https://youtu.be/EIJ-9gLuiX8?si=IxaqqwFMCpERJySA" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.youtube.com/vi/EIJ-9gLuiX8/0.jpg" alt="¿Cómo Aprender Data Science? Entrevista a Gustavo Juantorena">
+              </a>
+              <p><strong>¿Cómo aprender Data Science</strong>?</p>
+              <p>Entrevista a Gustavo Juantorena</p>
+            </div>
+            <div class="media-item">
+              <a href="https://youtu.be/YEBiJxqIjdY?si=RRVyFhyhfMDI0b29" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.youtube.com/vi/YEBiJxqIjdY/0.jpg" alt="Monitoreo de Alzheimer con Inteligencia Artificial">
+              </a>
+              <p><strong>Monitoreo de Alzheimer con Inteligencia Artificial</strong></p>
+              <p>Charla de Gustavo Juantorena</p>
+            </div>
+            <div class="media-item">
+              <a href="https://www.youtube.com/watch?v=0LT4kr-GPBA&t=224s&ab_channel=freeCodeCampEspa%C3%B1ol" target="_blank" rel="noopener noreferrer">
+                <img src="https://i.ytimg.com/vi/0LT4kr-GPBA/hqdefault.jpg" alt="freeCodeCamp Podcast en Español Episodio 22">
+              </a>
+              <p><strong>freeCodeCamp Podcast en Español, episodio 22</strong></p>
+              <p>Explorando la ciencia de datos y la neurociencia</p>
+            </div>
+            <div class="media-item">
+              <a href="https://youtu.be/KP-okY7gt5c?si=cJidBelavtukwDCE" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.youtube.com/vi/KP-okY7gt5c/0.jpg" alt="De Neurociencia a Ciencia de Datos">
+              </a>
+              <p><strong>De Neurociencia a Ciencia de Datos</strong></p>
+              <p>Gustavo Juantorena</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2><span class="icon">📚</span>Contribuciones científicas</h2>
+          <ul class="list">
+            <li>
+              <strong>
+                <a href="https://www.nature.com/articles/s41598-022-16431-9" target="_blank" rel="noopener noreferrer">
+                  Unveiling Trail Making Test: visual and manual trajectories indexing multiple executive processes
+                  (Nature Scientific Reports)
+                </a>
+              </strong>
+            </li>
+            <li>
+              <strong>
+                <a href="https://www.biorxiv.org/content/10.1101/2023.07.11.548447v1.abstract" target="_blank" rel="noopener noreferrer">
+                  Web based eye tracking for remote cognitive assessments: The anti saccade task as a case study
+                  (bioRxiv)
+                </a>
+              </strong>
+            </li>
+            <li>
+              <strong>
+                <a href="https://dl.acm.org/doi/10.1145/3649902.3655648" target="_blank" rel="noopener noreferrer">
+                  Enhancing Cognitive Assessment: Integrating Hand and Eye Tracking in the Digital Trail Making Test for Mild Cognitive Impairment
+                  (ETRA 2024)
+                </a>
+              </strong>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>© <span id="year"></span> Gustavo Juantorena</p>
+    </footer>
+  </div>
+
+  <script>
+    // Language switcher
+    const buttons = document.querySelectorAll('.lang-btn');
+    const sections = {
+      en: document.getElementById('lang-en'),
+      es: document.getElementById('lang-es')
+    };
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        Object.keys(sections).forEach(k => {
+          sections[k].classList.toggle('active', k === lang);
+        });
+        document.documentElement.lang = lang;
+      });
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+   
+  
+  <script>
+    
+    /*--------------------  MODO OSCURO / CLARO  ......................................*/
+
+     const toggleDarkMode = () => {
+         
+          document.body.classList.toggle('light-mode');
+          
+          const isDarkMode = document.body.classList.contains('light-mode');
+        
+          localStorage.setItem('light-mode', isDarkMode);
+        
+        };
+        
+        // Aplicar el modo oscuro si estaba habilitado anteriormente
+        if (localStorage.getItem('light-mode') === 'true') {
+          document.body.classList.add('light-mode');
+         
+        }
+        
+
+        const darkModeToggle = document.getElementById('light-mode-toggle');
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+      
+      
+   </script>
+</body>
+</html>
